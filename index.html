@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа: Гиперссылки и формы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+    <main>
+        <div class="container">
+
+            <!-- СЕКЦИЯ 1: ГИПЕРССЫЛКИ -->
+            <section class="card">
+                <h1 class="section-title">Список гиперссылок</h1>
+
+                <ul class="link-list">
+                    <li><a href="https://kubsu.ru/">абсолютную гиперссылку на главную страницу сайта kubsu.ru</a></li>
+                    <li><a href="https://www.kubsu.ru/">абсолютную на главную сайта kubsu.ru в протоколе https</a></li>
+                    <li>
+                        <a href="https://kubsu.ru/" class="img-link">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg" alt="Гранд-Каньон" class="item-img">
+                        </a>
+                        — ссылка-изображение
+                    </li>
+                    <li><a href="/about">сокращенную ссылку на внутреннюю страницу</a></li>
+                    <li><a href="/">сокращенную ссылку на главную страницу</a></li>
+                    <li><a href="#top">Ссылка на фрагмент текущей страницы (наверх)</a></li>
+                    <li><a href="https://kubsu.ru/?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами в URL</a></li>
+                    <li><a href="https://kubsu.ru/page.html?id=123">ссылка с параметром id в URL</a></li>
+                    <li><a href="current.html">относительную на страницу в текущем каталоге</a></li>
+                    <li><a href="about/about.html">относительную на страницу в каталоге about</a></li>
+                    <li><a href="../index.html">относительную на страницу в каталоге уровнем выше текущего</a></li>
+                    <li><a href="../../index.html">относительную на страницу в каталоге двумя уровнями выше</a></li>
+                    <li class="ctx-item">
+                        контекстная ссылка в тексте абзаца: Подробнее о вузе можно узнать на
+                        <a href="https://kubsu.ru/">официальном сайте КубГУ</a>, там есть вся информация.
+                    </li>
+                    <li><a href="https://ru.wikipedia.org/wiki/HTML#История">ссылка на фрагмент страницы стороннего сайта</a></li>
+                    <li>
+                        ссылки из прямоугольных и круглых областей картинки:
+                        <div class="hotmap">
+                            <a href="https://kubsu.ru/" class="hotmap-rect" title="Прямоугольная область"></a>
+                            <a href="https://kubsu.ru/about" class="hotmap-circle" title="Круглая область"></a>
+                        </div>
+                    </li>
+                    <li><a href="">ссылка с пустым href</a></li>
+                    <li><a>Ссылка без href</a></li>
+                    <li><a href="https://kubsu.ru/" rel="nofollow">ссылка, по которой запрещён переход поисковикам</a></li>
+                    <li><noindex><a href="https://kubsu.ru/">ссылка, запрещённая для индексации поисковиками</a></noindex></li>
+                    <li>
+                        нумерованный список ссылок с подписями title:
+                        <ul class="sub-list">
+                            <li><a href="https://kubsu.ru/" title="Главная страница КубГУ">КубГУ</a></li>
+                            <li><a href="https://ya.ru/" title="Яндекс">Яндекс</a></li>
+                            <li><a href="https://ru.wikipedia.org/" title="Википедия">Википедия</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="ftp://user:password@ftp.kubsu.ru/file.zip">ссылка на файл на FTP-сервере с авторизацией</a></li>
+                </ul>
+            </section>
+
+            <!-- СЕКЦИЯ 2: ФОРМА -->
+            <section class="card">
+                <h2 class="section-title">Форма</h2>
+                <form action="/save" method="post" id="myForm" class="site-form">
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fio">1. ФИО</label>
+                            <input type="text" id="fio" name="fio" required
+                                   pattern="[А-Яа-яЁёA-Za-z\s\-]+"
+                                   title="Только буквы, пробел и дефис. Цифры нельзя.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">2. Телефон</label>
+                            <input type="tel" id="phone" name="phone" required
+                                   pattern="\+?[0-9\s\-\(\)]{7,18}"
+                                   title="Только цифры и символы + - ( ). От 7 до 18 символов.">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">3. E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthdate">4. Дата рождения</label>
+                            <input type="date" id="birthdate" name="birthdate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>5. Пол</label>
+                        <div class="choice-group">
+                            <label class="choice">
+                                <input type="radio" name="gender" value="male">
+                                <span>Мужской</span>
+                            </label>
+                            <label class="choice">
+                                <input type="radio" name="gender" value="female">
+                                <span>Женский</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>6. Любимый язык программирования</label>
+                        <div class="checkbox-grid">
+                            <label class="check"><input type="checkbox" name="lang[]" value="Pascal"><span>Pascal</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="C"><span>C</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="C++"><span>C++</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="JavaScript"><span>JavaScript</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="PHP"><span>PHP</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Python"><span>Python</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Java"><span>Java</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Haskell"><span>Haskell</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Clojure"><span>Clojure</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Prolog"><span>Prolog</span></label>
+                            <label class="check"><input type="checkbox" name="lang[]" value="Scala"><span>Scala</span></label>
+                        </div>
+                        <span id="lang-error" class="form-error">Выберите хотя бы один язык!</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bio">7. Биография</label>
+                        <textarea id="bio" name="bio" rows="6"></textarea>
+                    </div>
+
+                    <label class="agree">
+                        <input type="checkbox" name="contract" value="yes" required>
+                        <span>8. С контрактом ознакомлен(а)</span>
+                    </label>
+
+                    <button type="submit">9. Сохранить</button>
+                </form>
+            </section>
+
+            <a href="#top" class="back-to-top">↑ Вернуться наверх</a>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function (e) {
+            const langs = document.querySelectorAll('input[name="lang[]"]:checked');
+            const langErr = document.getElementById("lang-error");
+
+            if (langs.length === 0) {
+                langErr.style.display = "inline";
+                e.preventDefault();
+            } else {
+                langErr.style.display = "none";
+            }
+
+            const birthdate = document.getElementById("birthdate").value;
+            if (birthdate && birthdate >= "2026-01-01") {
+                alert("Дата рождения должна быть раньше 2026 года.");
+                e.preventDefault();
+            }
+        });
+    </script>
+
+</body>
+</html>
