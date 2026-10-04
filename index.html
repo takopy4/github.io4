@@ -3,144 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа: Гиперссылки и формы</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Задание 4: Bootstrap 5 — Гиперссылки и формы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="custom4.css">
 </head>
-<body id="top">
+<body id="top" class="site-body">
+
+    <!-- ШАПКА (Mobile First: на смартфоне бренд и вертикальное меню, с md — меню в строку, с lg — бренд слева, меню справа) -->
+    <header class="sticky-top bg-primary bg-gradient shadow-sm text-white">
+        <div class="container py-3">
+            <div class="row g-3 align-items-center">
+
+                <!-- Бренд: логотип-круг + название -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="#top" class="d-flex align-items-center gap-3 text-decoration-none text-white">
+                        <span class="logo-circle"><span class="logo-letter">К</span></span>
+                        <span class="d-flex flex-column lh-sm">
+                            <span class="fs-5 fw-bold">Лабораторная работа</span>
+                            <span class="small text-white-50">Гиперссылки · Формы · Таблицы</span>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Меню навигации -->
+                <div class="col-12 col-md-6 col-lg-8">
+                    <nav class="main-nav d-flex flex-column flex-md-row justify-content-md-end gap-2">
+                        <a href="#link1" class="btn btn-light nav-active fw-semibold">Ссылки</a>
+                        <a href="#link2" class="btn btn-outline-light fw-semibold">Таблица</a>
+                        <a href="#link3" class="btn btn-outline-light fw-semibold">Форма</a>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </header>
 
     <main>
-        <div class="container">
+        <div class="container py-4">
 
-            <!-- СЕКЦИЯ 1: ГИПЕРССЫЛКИ -->
-            <section class="card">
-                <h1 class="section-title">Список гиперссылок</h1>
+            <!-- СЕТКА: на смартфоне таблица показывается ВЫШЕ ссылок (order-1/order-2),
+                 с LG — ссылки слева (col-lg-7), таблица справа (col-lg-5) -->
+            <div class="row g-4">
 
-                <ul class="link-list">
-                    <li><a href="https://kubsu.ru/">абсолютную гиперссылку на главную страницу сайта kubsu.ru</a></li>
-                    <li><a href="https://www.kubsu.ru/">абсолютную на главную сайта kubsu.ru в протоколе https</a></li>
-                    <li>
-                        <a href="https://kubsu.ru/" class="img-link">
-                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg" alt="Гранд-Каньон" class="item-img">
-                        </a>
-                        — ссылка-изображение
-                    </li>
-                    <li><a href="/about">сокращенную ссылку на внутреннюю страницу</a></li>
-                    <li><a href="/">сокращенную ссылку на главную страницу</a></li>
-                    <li><a href="#top">Ссылка на фрагмент текущей страницы (наверх)</a></li>
-                    <li><a href="https://kubsu.ru/?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами в URL</a></li>
-                    <li><a href="https://kubsu.ru/page.html?id=123">ссылка с параметром id в URL</a></li>
-                    <li><a href="current.html">относительную на страницу в текущем каталоге</a></li>
-                    <li><a href="about/about.html">относительную на страницу в каталоге about</a></li>
-                    <li><a href="../index.html">относительную на страницу в каталоге уровнем выше текущего</a></li>
-                    <li><a href="../../index.html">относительную на страницу в каталоге двумя уровнями выше</a></li>
-                    <li class="ctx-item">
-                        контекстная ссылка в тексте абзаца: Подробнее о вузе можно узнать на
-                        <a href="https://kubsu.ru/">официальном сайте КубГУ</a>, там есть вся информация.
-                    </li>
-                    <li><a href="https://ru.wikipedia.org/wiki/HTML#История">ссылка на фрагмент страницы стороннего сайта</a></li>
-                    <li>
-                        ссылки из прямоугольных и круглых областей картинки:
-                        <div class="hotmap">
-                            <a href="https://kubsu.ru/" class="hotmap-rect" title="Прямоугольная область"></a>
-                            <a href="https://kubsu.ru/about" class="hotmap-circle" title="Круглая область"></a>
-                        </div>
-                    </li>
-                    <li><a href="">ссылка с пустым href</a></li>
-                    <li><a>Ссылка без href</a></li>
-                    <li><a href="https://kubsu.ru/" rel="nofollow">ссылка, по которой запрещён переход поисковикам</a></li>
-                    <li><noindex><a href="https://kubsu.ru/">ссылка, запрещённая для индексации поисковиками</a></noindex></li>
-                    <li>
-                        нумерованный список ссылок с подписями title:
-                        <ul class="sub-list">
-                            <li><a href="https://kubsu.ru/" title="Главная страница КубГУ">КубГУ</a></li>
-                            <li><a href="https://ya.ru/" title="Яндекс">Яндекс</a></li>
-                            <li><a href="https://ru.wikipedia.org/" title="Википедия">Википедия</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ftp://user:password@ftp.kubsu.ru/file.zip">ссылка на файл на FTP-сервере с авторизацией</a></li>
-                </ul>
-            </section>
-
-            <!-- СЕКЦИЯ 2: ФОРМА -->
-            <section class="card">
-                <h2 class="section-title">Форма</h2>
-                <form action="/save" method="post" id="myForm" class="site-form">
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="fio">1. ФИО</label>
-                            <input type="text" id="fio" name="fio" required
-                                   pattern="[А-Яа-яЁёA-Za-z\s\-]+"
-                                   title="Только буквы, пробел и дефис. Цифры нельзя.">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">2. Телефон</label>
-                            <input type="tel" id="phone" name="phone" required
-                                   pattern="\+?[0-9\s\-\(\)]{7,18}"
-                                   title="Только цифры и символы + - ( ). От 7 до 18 символов.">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">3. E-mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="birthdate">4. Дата рождения</label>
-                            <input type="date" id="birthdate" name="birthdate" required>
+                <!-- БЛОК 1: СПИСОК ГИПЕРССЫЛОК (в HTML идёт первым) -->
+                <section id="link1" class="col-12 col-lg-7 order-2 order-lg-1">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h1 class="section-title fs-3 fw-bold mb-4">Список гиперссылок</h1>
+                            <ul class="link-list list-unstyled d-flex flex-column gap-1 mb-0">
+                                <li class="position-relative ps-5"><a href="https://kubsu.ru/">абсолютную гиперссылку на главную страницу сайта kubsu.ru</a></li>
+                                <li class="position-relative ps-5"><a href="https://www.kubsu.ru/">абсолютную на главную сайта kubsu.ru в протоколе https</a></li>
+                                <li class="position-relative ps-5">
+                                    <a href="https://upload.wikimedia.org/wikipedia/commons/3/31/Canyon_River_Tree_%28165872763%29.jpeg" class="d-inline-block">
+                                        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/330px-Canyon_River_Tree_%28165872763%29.jpeg" alt="Гранд-Каньон" class="img-fluid rounded-2 shadow-sm mt-1">
+                                    </a>
+                                    <span class="d-block">— ссылка-изображение</span>
+                                </li>
+                                <li class="position-relative ps-5"><a href="/about">сокращенную ссылку на внутреннюю страницу</a></li>
+                                <li class="position-relative ps-5"><a href="/">сокращенную ссылку на главную страницу</a></li>
+                                <li class="position-relative ps-5"><a href="#top">Ссылка на фрагмент текущей страницы (наверх)</a></li>
+                                <li class="position-relative ps-5"><a href="https://kubsu.ru/?param1=value1&param2=value2&param3=value3">Ссылка с тремя параметрами в URL</a></li>
+                                <li class="position-relative ps-5"><a href="https://kubsu.ru/page.html?id=123">ссылка с параметром id в URL</a></li>
+                                <li class="position-relative ps-5"><a href="current.html">относительную на страницу в текущем каталоге</a></li>
+                                <li class="position-relative ps-5"><a href="about/about.html">относительную на страницу в каталоге about</a></li>
+                                <li class="position-relative ps-5"><a href="../index.html">относительную на страницу в каталоге уровнем выше текущего</a></li>
+                                <li class="position-relative ps-5"><a href="../../index.html">относительную на страницу в каталоге двумя уровнями выше</a></li>
+                                <li class="position-relative ps-5 text-body-secondary">
+                                    контекстная ссылка в тексте абзаца: Подробнее о вузе можно узнать на
+                                    <a href="https://kubsu.ru/">официальном сайте КубГУ</a>, там есть вся информация.
+                                </li>
+                                <li class="position-relative ps-5"><a href="https://ru.wikipedia.org/wiki/HTML#История">ссылка на фрагмент страницы стороннего сайта</a></li>
+                                <li class="position-relative ps-5">
+                                    ссылки из прямоугольных и круглых областей картинки:
+                                    <div class="hotmap mt-2 mb-1">
+                                        <a href="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg/330px-View_of_Mount_Fuji_from_%C5%8Cwakudani_20211202.jpg" class="hotmap-rect" title="Прямоугольная область — фото Фудзиямы"></a>
+                                        <a href="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Panorama_of_Peyto_Lake%2C_Banff_National_Park%2C_Alberta%2C_Canada.jpg/330px-Panorama_of_Peyto_Lake%2C_Banff_National_Park%2C_Alberta%2C_Canada.jpg" class="hotmap-circle" title="Круглая область — озеро Пейто"></a>
+                                    </div>
+                                </li>
+                                <li class="position-relative ps-5"><a href="">ссылка с пустым href</a></li>
+                                <li class="position-relative ps-5"><a>Ссылка без href</a></li>
+                                <li class="position-relative ps-5"><a href="https://kubsu.ru/" rel="nofollow">ссылка, по которой запрещён переход поисковикам</a></li>
+                                <li class="position-relative ps-5"><noindex><a href="https://kubsu.ru/">ссылка, запрещённая для индексации поисковиками</a></noindex></li>
+                                <li class="position-relative ps-5">
+                                    нумерованный список ссылок с подписями title:
+                                    <ul class="sub-list d-flex flex-wrap gap-2 mt-2 mb-0">
+                                        <li class="px-3 py-1"><a href="https://kubsu.ru/" title="Главная страница КубГУ">КубГУ</a></li>
+                                        <li class="px-3 py-1"><a href="https://ya.ru/" title="Яндекс">Яндекс</a></li>
+                                        <li class="px-3 py-1"><a href="https://ru.wikipedia.org/" title="Википедия">Википедия</a></li>
+                                    </ul>
+                                </li>
+                                <li class="position-relative ps-5"><a href="ftp://user:password@ftp.kubsu.ru/file.zip">ссылка на файл на FTP-сервере с авторизацией</a></li>
+                            </ul>
                         </div>
                     </div>
+                </section>
 
-                    <div class="form-group">
-                        <label>5. Пол</label>
-                        <div class="choice-group">
-                            <label class="choice">
-                                <input type="radio" name="gender" value="male">
-                                <span>Мужской</span>
-                            </label>
-                            <label class="choice">
-                                <input type="radio" name="gender" value="female">
-                                <span>Женский</span>
-                            </label>
+                <!-- БЛОК 2: ТАБЛИЦА (на смартфоне отображается ПЕРВОЙ) -->
+                <section id="link2" class="col-12 col-lg-5 order-1 order-lg-2">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="section-title fs-3 fw-bold mb-4">Таблица</h2>
+                            <div class="table-responsive">
+                                <table class="data-table table table-bordered table-striped table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Заголовок 1</th>
+                                            <th>Заголовок 2</th>
+                                            <th>Заголовок 3</th>
+                                            <th>Заголовок 4</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ячейка 1.1</td>
+                                            <td>Ячейка 1.2</td>
+                                            <td>Ячейка 1.3</td>
+                                            <td>Ячейка 1.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ячейка 2.1</td>
+                                            <td>Ячейка 2.2</td>
+                                            <td>Ячейка 2.3</td>
+                                            <td>Ячейка 2.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ячейка 3.1</td>
+                                            <td>Ячейка 3.2</td>
+                                            <td>Ячейка 3.3</td>
+                                            <td>Ячейка 3.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ячейка 4.1</td>
+                                            <td>Ячейка 4.2</td>
+                                            <td>Ячейка 4.3</td>
+                                            <td>Ячейка 4.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ячейка 5.1</td>
+                                            <td>Ячейка 5.2</td>
+                                            <td>Ячейка 5.3</td>
+                                            <td>Ячейка 5.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ячейка 6.1</td>
+                                            <td>Ячейка 6.2</td>
+                                            <td>Ячейка 6.3</td>
+                                            <td>Ячейка 6.4</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <div class="form-group">
-                        <label>6. Любимый язык программирования</label>
-                        <div class="checkbox-grid">
-                            <label class="check"><input type="checkbox" name="lang[]" value="Pascal"><span>Pascal</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="C"><span>C</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="C++"><span>C++</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="JavaScript"><span>JavaScript</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="PHP"><span>PHP</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Python"><span>Python</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Java"><span>Java</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Haskell"><span>Haskell</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Clojure"><span>Clojure</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Prolog"><span>Prolog</span></label>
-                            <label class="check"><input type="checkbox" name="lang[]" value="Scala"><span>Scala</span></label>
+                <!-- БЛОК 3: ФОРМА -->
+                <section id="link3" class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <h2 class="section-title fs-3 fw-bold mb-4">Форма</h2>
+                            <form action="/save" method="post" id="myForm" class="row g-3">
+
+                                <div class="col-12 col-md-6">
+                                    <label for="fio" class="form-label fw-semibold">1. ФИО</label>
+                                    <input type="text" class="form-control" id="fio" name="fio" required
+                                           pattern="[А-Яа-яЁёA-Za-z\s\-]+"
+                                           title="Только буквы, пробел и дефис. Цифры нельзя.">
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="phone" class="form-label fw-semibold">2. Телефон</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required
+                                           pattern="\+?[0-9\s\-\(\)]{7,18}"
+                                           title="Только цифры и символы + - ( ). От 7 до 18 символов.">
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="email" class="form-label fw-semibold">3. E-mail</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <label for="birthdate" class="form-label fw-semibold">4. Дата рождения</label>
+                                    <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold mb-1">5. Пол</label>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <label class="choice px-3 py-2 mb-0">
+                                            <input type="radio" name="gender" value="male">
+                                            <span>Мужской</span>
+                                        </label>
+                                        <label class="choice px-3 py-2 mb-0">
+                                            <input type="radio" name="gender" value="female">
+                                            <span>Женский</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold mb-1">6. Любимый язык программирования</label>
+                                    <div class="row g-2">
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Pascal"><span>Pascal</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="C"><span>C</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="C++"><span>C++</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="JavaScript"><span>JavaScript</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="PHP"><span>PHP</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Python"><span>Python</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Java"><span>Java</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Haskell"><span>Haskell</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Clojure"><span>Clojure</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Prolog"><span>Prolog</span></label>
+                                        </div>
+                                        <div class="col-6 col-md-4 col-lg-3">
+                                            <label class="check d-flex align-items-center gap-2 px-3 py-2 mb-0 w-100"><input type="checkbox" name="lang[]" value="Scala"><span>Scala</span></label>
+                                        </div>
+                                    </div>
+                                    <span id="lang-error" class="form-error d-none mt-2 px-3 py-2">Выберите хотя бы один язык!</span>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="bio" class="form-label fw-semibold">7. Биография</label>
+                                    <textarea class="form-control" id="bio" name="bio" rows="6"></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="contract" value="yes" id="contract" required>
+                                        <label class="form-check-label" for="contract">8. С контрактом ознакомлен(а)</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-gold w-100 py-3">9. Сохранить</button>
+                                </div>
+                            </form>
                         </div>
-                        <span id="lang-error" class="form-error">Выберите хотя бы один язык!</span>
                     </div>
+                </section>
 
-                    <div class="form-group">
-                        <label for="bio">7. Биография</label>
-                        <textarea id="bio" name="bio" rows="6"></textarea>
-                    </div>
+            </div>
 
-                    <label class="agree">
-                        <input type="checkbox" name="contract" value="yes" required>
-                        <span>8. С контрактом ознакомлен(а)</span>
-                    </label>
+            <!-- ССЫЛКА НАВЕРХ -->
+            <div class="text-center mt-4">
+                <a href="#top" class="back-to-top px-4 py-2 text-decoration-none">↑ Вернуться наверх</a>
+            </div>
 
-                    <button type="submit">9. Сохранить</button>
-                </form>
-            </section>
-
-            <a href="#top" class="back-to-top">↑ Вернуться наверх</a>
         </div>
     </main>
+
+    <!-- ПОДВАЛ САЙТА -->
+    <footer class="site-footer mt-4 py-4">
+        <div class="container">
+            <p class="mb-0 text-center">(c) Губанов Кирилл Д</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         document.getElementById("myForm").addEventListener("submit", function (e) {
@@ -148,10 +287,10 @@
             const langErr = document.getElementById("lang-error");
 
             if (langs.length === 0) {
-                langErr.style.display = "inline";
+                langErr.classList.remove("d-none");
                 e.preventDefault();
             } else {
-                langErr.style.display = "none";
+                langErr.classList.add("d-none");
             }
 
             const birthdate = document.getElementById("birthdate").value;
